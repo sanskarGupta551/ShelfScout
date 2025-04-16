@@ -3,7 +3,7 @@
 ## Project Setup
 
 ### GCP Project Creation
-- Created project: `shelfscout-portfolio`
+- Created project: `shelfscout`
 - Enabled necessary APIs:
   - Vertex AI API
   - Cloud Storage API
@@ -14,7 +14,7 @@
 
 ### IAM Configuration
 - Primary account: Owner role (solo developer project)
-- Created service account: `shelfscout-sa@shelfscout-portfolio.iam.gserviceaccount.com`
+- Created service account: `universal-development@shelfscout.iam.gserviceaccount.com`
 - Service account roles:
   - `roles/aiplatform.user`
   - `roles/storage.objectAdmin`
@@ -23,7 +23,7 @@
 ## Data Infrastructure
 
 ### Cloud Storage Configuration
-- Bucket name: `shelfscout-data`
+- Bucket name: `sku-110k-dataset`
 - Location type: US Multi-region
 - Default storage class: Standard
 - Access control: Uniform
