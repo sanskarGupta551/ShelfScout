@@ -1,0 +1,17 @@
+Metric,Value
+Total Images,11689
+Training Images,8185
+Validation Images,584
+Test Images,2920
+Training Split %,70.02%
+Validation Split %,5.00%
+Test Split %,24.98%
+Avg. Image Width (px),2428.76
+Avg. Image Height (px),3212.16
+Avg. Aspect Ratio,0.79
+Avg. File Size (KB),1170.22
+Avg. Objects per Image,146.99
+Max Objects in an Image,599
+Min Objects in an Image,35
+Avg. Bounding Box Area,0.20
+Total Bounding Boxes Analyzed,36748
