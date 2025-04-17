@@ -79,6 +79,24 @@ SKU110K_Kaggle/
 - Challenging detection scenario due to visual similarity of products
 - Complex retail environments with varying lighting conditions
 
+## Vertex AI Dataset Configuration
+
+### Dataset Creation
+- Created Vertex AI datasets for training, validation, and test splits
+- Converted annotations to Vertex AI-compatible JSONL format
+- Established proper references between annotations and GCS image paths
+- Added consistent metadata across all datasets including:
+  - Purpose: retail_object_detection
+  - Project: shelfscout
+  - Dataset name: sku110k
+  - Version: 1_0
+  - Split information
+
+### Dataset Verification
+- Confirmed successful creation of all datasets in Vertex AI
+- Verified annotation conversion and image references
+- Ensured datasets are properly labeled for easy identification
+
 ## Current Progress
 
 - [x] Create GCP project with appropriate IAM permissions
@@ -87,5 +105,5 @@ SKU110K_Kaggle/
 - [x] Create initial Vertex AI Workbench notebooks
 - [x] Validate SKU-110K dataset
 - [x] Analyze data distribution and annotation format
-- [ ] Configure Vertex AI Datasets
+- [x] Configure Vertex AI Datasets
 - [ ] Implement data preprocessing pipeline
