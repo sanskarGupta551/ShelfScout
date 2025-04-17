@@ -61,12 +61,31 @@ SKU110K_Kaggle/
     └── test/
 ```
 
+## Data Analysis
+
+### Data Distribution
+- The dataset has a 70/5/25 split for Train/Validation/Test
+- This distribution is acceptable for our implementation needs
+
+### Annotation Format
+- Annotations stored as text files with normalized coordinates (0-1 range)
+- Each line follows the format: [x1 y1 x2 y2 confidence]
+- High object density with ~100-180 products per image
+- Bounding boxes represent individual retail products on shelves
+
+### Dataset Characteristics
+- Images show densely packed retail shelves
+- Various product sizes and shapes
+- Challenging detection scenario due to visual similarity of products
+- Complex retail environments with varying lighting conditions
+
 ## Current Progress
 
 - [x] Create GCP project with appropriate IAM permissions
 - [x] Set up Cloud Storage buckets for SKU-110K dataset
 - [x] Import SKU-110K dataset to GCS
+- [x] Create initial Vertex AI Workbench notebooks
 - [x] Validate SKU-110K dataset
+- [x] Analyze data distribution and annotation format
 - [ ] Configure Vertex AI Datasets
 - [ ] Implement data preprocessing pipeline
-- [ ] Create initial Vertex AI Workbench notebooks
