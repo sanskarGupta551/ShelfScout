@@ -1,5 +1,0 @@
-SKU110K Dataset ID: projects/385790973873/locations/us-central1/datasets/4152031334144933888
-GCS Location: gs://sku-110k-dataset/SKU110K_Kaggle
-Creation Time: 2025-04-17 16:17:27.489651+00:00
-Total Images: 11689
-Train/Val/Test Split: 8185/584/2920
