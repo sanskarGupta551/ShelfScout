@@ -1,86 +1,100 @@
-# ShelfScout: GCP Tech Stack
+# ShelfScout: Optimized GCP Tech Stack
 
 ## Overview
-This tech stack represents a fully managed, production-ready implementation of ShelfScout - a computer vision system for retail product detection using Google Cloud Platform's ML services, with an emphasis on Vertex AI managed services.
+This tech stack represents a streamlined, production-ready implementation of ShelfScout - a computer vision system for retail product detection using Google Cloud Platform's ML services. The stack focuses on essential components that demonstrate professional ML engineering capabilities while avoiding unnecessary complexity.
 
 ## Data Management
-- **Cloud Storage**: Central repository for image datasets and exported models
-- **Vertex AI Datasets**: Managed dataset versioning and labeling for image data
-- **Vertex AI Feature Store**: Centralized feature repository for consistent training and serving
-- **BigQuery**: Analytics and metadata storage for model performance and business metrics
+- **Cloud Storage**: Central repository for datasets and exported models
+- **Vertex AI Datasets**: Single managed dataset with appropriate metadata
+- **TFRecord Format**: Optimized storage format for efficient training
+- **Cloud Logging**: Audit logs for data operations
 
 ## Development & Experimentation
-- **Vertex AI Workbench**: Interactive Jupyter environment for model development
-- **Vertex AI Experiments**: Experiment tracking and comparison
-- **Model Garden**: Pre-trained foundation models for computer vision
-- **Vertex AI TensorBoard**: Visualization of training metrics and model performance
+- **Vertex AI Workbench**: Interactive Jupyter environment for exploration and development
+- **Vertex AI Experiments**: Experiment tracking and model comparison
+- **TensorFlow Model Garden**: Pre-built architectures for efficient fine-tuning
+- **Vertex AI TensorBoard**: Visualization of training metrics and performance
 
-## Model Training
-- **Vertex AI AutoML Vision**: Low-code model development for baseline models
-- **Vertex AI Training**: Custom training service for specialized vision models
-- **Vertex AI Hyperparameter Tuning**: Automated optimization of model parameters
-- **GPU/TPU Resources**: Accelerated hardware for deep learning model training
+## Model Development
+- **Vertex AI AutoML Vision**: Rapid baseline model development
+- **Vertex AI Training**: Custom training with pre-built architecture fine-tuning
+- **Targeted Hyperparameter Tuning**: Focused optimization of 3-5 key parameters
+- **GPU Accelerated Computing**: Cost-effective training using spot instances
 
-## Model Deployment & Serving
+## Deployment & Serving
 - **Vertex AI Model Registry**: Centralized model management and versioning
-- **Vertex AI Endpoints**: Fully managed online prediction service with auto-scaling
-- **Vertex AI Batch Prediction**: Managed large-scale batch inference
-- **Vertex AI Multi-model Serving**: Efficient deployment of multiple model versions
+- **Vertex AI Endpoints**: Scalable online prediction service with auto-scaling
+- **Model Quantization**: Optimized model performance for production
+- **Cloud Run**: Serverless hosting for demo application
 
 ## MLOps & Orchestration
-- **Vertex AI Pipelines**: End-to-end ML workflow orchestration
-- **Cloud Build**: CI/CD automation for model deployment
-- **Vertex ML Metadata**: Tracking and auditing of model lineage and artifacts
-- **Predefined Pipeline Components**: Accelerate development with ready-to-use TFX components
+- **Vertex AI Pipelines**: Streamlined ML workflow orchestration
+- **Vertex ML Metadata**: Tracking and auditing of model lineage
+- **Schedule-Based Triggers**: Automated retraining on set intervals
+- **GitHub Actions**: Basic CI/CD for code management
 
-## Monitoring & Maintenance
-- **Vertex AI Model Monitoring**: Automated drift detection and monitoring
+## Monitoring & Evaluation
 - **Cloud Monitoring**: System metrics and dashboards
-- **Cloud Logging**: Centralized logging for all components
-- **Vertex AI Continuous Evaluation**: Ongoing validation of model performance
+- **Vertex AI Model Monitoring**: Drift detection and performance tracking
+- **A/B Testing**: Controlled comparison between model versions
+- **Custom Dashboards**: Usage and performance visualization
 
-## Responsible AI & Evaluation
-- **Vertex Explainable AI**: Model interpretability and feature attribution
-- **Vertex AI Evaluation**: Systematic model evaluation and comparison
-- **Fairness Indicators**: Bias detection and mitigation tools
+## Responsible AI
+- **Vertex Explainable AI**: Feature attribution for model interpretability
 - **Model Cards**: Documentation of model characteristics and limitations
+- **Continuous Evaluation**: Ongoing validation of model performance
+- **Threshold Configuration**: Custom confidence thresholds for predictions
 
 ## Security & Governance
-- **IAM (Identity and Access Management)**: Fine-grained access control
-- **Secret Manager**: Secure management of credentials and secrets
-- **VPC Service Controls**: Network security perimeter
-- **Data Loss Prevention (DLP)**: Protection of sensitive information in images
+- **IAM (Identity and Access Management)**: Appropriate role-based access
+- **Service Accounts**: Secure service-to-service authentication
+- **Cloud KMS**: Key management for sensitive operations
+- **VPC Service Controls**: Basic network security (if needed)
 
-## Specialized Vision Services
-- **Vertex AI Vision API**: Pre-built API for general computer vision tasks
-- **Document AI**: Processing text in product images
-- **Vision AI**: Additional product detection capabilities
-- **Vertex AI Agent Builder**: Optional conversational interface for system interaction
+## Demo Application
+- **Streamlit**: Interactive web interface for model demonstration
+- **Cloud Run**: Serverless deployment with auto-scaling
+- **Vertex AI SDK**: Client library integration for predictions
+- **Cloud Storage**: Sample image hosting for demonstrations
 
 ## System Architecture
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌──────────────────┐
 │  Cloud Storage  │     │  Vertex AI      │     │  Vertex AI       │
-│  (Image Data)   │────►│  AutoML Vision  │────►│  Custom Training │
+│  (SKU-110K Data)│────►│  AutoML Vision  │────►│  Custom Training │
 └─────────────────┘     └─────────────────┘     └──────────┬───────┘
                                                            │
                                                            ▼
 ┌─────────────────┐     ┌─────────────────┐     ┌──────────────────┐
-│  Vertex AI      │     │  Vertex AI      │     │  Vertex AI       │
-│  Feature Store  │◄────┤  Pipelines      │◄────┤  Experiments     │
+│  TFRecord       │     │  Vertex AI      │     │  Vertex AI       │
+│  Format         │◄────┤  Pipelines      │◄────┤  Experiments     │
 └────────┬────────┘     └─────────────────┘     └──────────────────┘
          │
          ▼
 ┌─────────────────┐     ┌─────────────────┐     ┌──────────────────┐
-│  Vertex AI      │     │  Vertex AI      │     │  Vertex AI       │
-│  Endpoints      │◄────┤  Model Registry │◄────┤  Evaluation      │
+│  Vertex AI      │     │  Vertex AI      │     │  Model           │
+│  Endpoints      │◄────┤  Model Registry │◄────┤  Quantization    │
 └────────┬────────┘     └─────────────────┘     └──────────────────┘
          │
          ▼
 ┌─────────────────┐     ┌─────────────────┐     ┌──────────────────┐
-│  Vertex AI      │     │  Vertex AI      │     │  Vertex          │
-│  Model Monitoring│────►│  Explainable AI │────►│  Continuous Eval │
+│  Cloud Run      │     │  Vertex         │     │  Cloud           │
+│  Streamlit App  │────►│  Explainable AI │────►│  Monitoring      │
 └─────────────────┘     └─────────────────┘     └──────────────────┘
 ```
 
-This fully managed, Vertex AI-centric tech stack enables ShelfScout to demonstrate Professional ML Engineering excellence by leveraging Google Cloud's purpose-built services across the complete ML lifecycle while minimizing operational overhead.
+## Implementation Rationale
+
+The optimized tech stack makes strategic choices to balance efficient development with production-ready quality:
+
+1. **Managed Services Focus**: Leverages Google's managed ML services to reduce operational overhead
+
+2. **Simplified Data Management**: Uses direct TFRecord format instead of complex feature store architecture
+
+3. **Strategic Model Development**: Combines AutoML baseline with targeted custom model fine-tuning
+
+4. **Practical Deployment**: Focuses on essential serving infrastructure with proper scaling
+
+5. **Lightweight Demo**: Uses Streamlit and Cloud Run for efficient demonstration capabilities
+
+This tech stack demonstrates the professional ML engineering skills required for the complete ML lifecycle while eliminating unnecessary complexity and over-engineering.
