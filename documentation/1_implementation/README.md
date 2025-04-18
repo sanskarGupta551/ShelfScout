@@ -1,126 +1,152 @@
-# ShelfScout: Implementation Plan
+# ShelfScout: Optimized Implementation Plan
 
 ## Overview
-This simplified implementation plan outlines the key phases, tasks, and timeline for bringing ShelfScout from concept to production. The plan prioritizes a risk-driven approach, focusing on core ML engineering components while leveraging managed GCP services to accelerate development.
+This implementation plan outlines the essential phases, tasks, and timeline for developing ShelfScout - a production-grade retail product detection system. The plan emphasizes GCP Professional ML Engineering best practices while eliminating redundancy and over-engineering to create a focused, high-impact portfolio project.
 
 ## Phase 1: Foundation (Weeks 1-2)
-**Goal:** Establish data infrastructure and baseline model
+**Goal:** Establish data infrastructure and baseline model using managed services
 
 ### Week 1: Project Setup & Data Preparation
 - [ ] Create GCP project with appropriate IAM permissions
-- [ ] Set up Cloud Storage buckets for SKU-110K dataset
+- [ ] Set up Cloud Storage bucket with appropriate access controls
 - [ ] Import and validate SKU-110K dataset
-- [ ] Configure Vertex AI Datasets with appropriate splits (80/10/10)
-- [ ] Implement data preprocessing pipeline for image normalization
-- [ ] Create initial Vertex AI Workbench notebooks for exploration
+- [ ] Configure single Vertex AI Dataset with appropriate metadata
+- [ ] Create Vertex AI Workbench notebook for data exploration
+- [ ] Develop streamlined data preprocessing pipeline with TFRecord output
 
-### Week 2: Baseline Model Development
-- [ ] Train initial AutoML Vision model for object detection
-- [ ] Evaluate baseline model performance on test set
+### Week 2: Baseline Model with AutoML
+- [ ] Configure Vertex AI AutoML Vision for object detection
+- [ ] Submit AutoML training job with preprocessed data
 - [ ] Set up Vertex AI Experiments for tracking results
-- [ ] Document baseline model performance metrics
-- [ ] Create initial CI/CD pipeline with Cloud Build
-- [ ] Deploy baseline model to Vertex AI Endpoints
+- [ ] Evaluate baseline model performance on test set
+- [ ] Document performance metrics and model characteristics
+- [ ] Export baseline model for deployment reference
 
-## Phase 2: Core Development (Weeks 3-5)
-**Goal:** Develop custom model and MLOps pipeline
+## Phase 2: Custom Model Development (Weeks 3-4)
+**Goal:** Develop optimized custom model and MLOps workflow
 
-### Week 3: Custom Model Architecture
-- [ ] Implement custom EfficientDet model in TensorFlow
-- [ ] Create training configuration for Vertex AI Training
-- [ ] Develop data augmentation strategy for retail shelves
+### Week 3: Custom Model Training
+- [ ] Select pre-built architecture from TF Model Garden (EfficientDet)
+- [ ] Implement fine-tuning configuration in Vertex AI
+- [ ] Configure targeted hyperparameter tuning (3-5 key parameters)
 - [ ] Set up GPU-accelerated training environment
-- [ ] Run initial training experiments
+- [ ] Train and evaluate model versions
+- [ ] Create comprehensive model documentation
 
-### Week 4: Model Optimization
-- [ ] Configure hyperparameter tuning jobs
-- [ ] Implement transfer learning from foundation models
-- [ ] Optimize model for inference performance
-- [ ] Perform model evaluation across various metrics
-- [ ] Create model registry entries with proper versioning
-
-### Week 5: MLOps Pipeline Development
-- [ ] Develop Vertex AI Pipeline for end-to-end workflow
-- [ ] Implement data validation components
-- [ ] Create model validation steps with quality gates
-- [ ] Set up automated retraining triggers
+### Week 4: MLOps Pipeline Development
+- [ ] Develop streamlined Vertex AI Pipeline with essential components:
+  - Data validation
+  - Model training
+  - Evaluation
+  - Registration
+- [ ] Implement model registry with versioning
 - [ ] Configure metadata tracking and lineage
+- [ ] Set up automated retraining trigger based on schedule
+- [ ] Document pipeline architecture and decision points
 
-## Phase 3: Deployment & Integration (Weeks 6-7)
-**Goal:** Create production-ready serving infrastructure
+## Phase 3: Deployment & Demonstration (Weeks 5-6)
+**Goal:** Create production-ready serving infrastructure with demo interface
 
-### Week 6: Serving Infrastructure
-- [ ] Configure Vertex AI Endpoints for online prediction
-- [ ] Set up Vertex AI Batch Prediction for large-scale processing
-- [ ] Implement serving container with preprocessing and postprocessing
-- [ ] Create API layer for application integration
-- [ ] Set up monitoring and alerting
-
-### Week 7: Web Application & Integration
-- [ ] Develop web interface for ShelfScout
-- [ ] Configure domain (shelfscout.cloudaiprojects.com)
-- [ ] Set up Firebase Hosting and Cloud CDN
-- [ ] Implement authentication and access controls
-- [ ] Create demo environment with sample retail images
-
-## Phase 4: Optimization & Monitoring (Weeks 8-10)
-**Goal:** Ensure production quality and continuous improvement
-
-### Week 8: Performance Optimization
-- [ ] Perform load testing on prediction endpoints
-- [ ] Optimize for latency and throughput
-- [ ] Implement caching strategies for common requests
-- [ ] Configure auto-scaling policies
+### Week 5: Serving Infrastructure
+- [ ] Deploy best model version to Vertex AI Endpoints
+- [ ] Configure auto-scaling and compute resources
+- [ ] Implement prediction API with preprocessing/postprocessing
+- [ ] Set up monitoring and logging
+- [ ] Perform load testing and optimization
 - [ ] Document performance benchmarks
 
-### Week 9: Responsible AI Implementation
-- [ ] Configure Vertex Explainable AI for feature attribution
-- [ ] Implement bias detection across different retail environments
-- [ ] Create comprehensive model cards
-- [ ] Set up continuous evaluation pipelines
-- [ ] Document ethical considerations and limitations
+### Week 6: Demo Application
+- [ ] Develop Streamlit application for model demonstration
+- [ ] Deploy application on Cloud Run
+- [ ] Implement simple authentication
+- [ ] Configure Vertex AI client library integration
+- [ ] Create sample demo dataset with visualization
+- [ ] Document API and integration approach
 
-### Week 10: Production Readiness
-- [ ] Conduct end-to-end testing on production environment
-- [ ] Implement automated canary deployments
-- [ ] Create comprehensive monitoring dashboards
-- [ ] Develop runbooks for common operational scenarios
-- [ ] Prepare final documentation and handover materials
+## Phase 4: Optimization & Production Readiness (Weeks 7-8)
+**Goal:** Ensure production quality with monitoring, optimization, and responsible AI
+
+### Week 7: Model Optimization & A/B Testing
+- [ ] Implement model quantization for improved performance
+- [ ] Configure A/B testing between model versions in Vertex AI
+- [ ] Optimize inference latency
+- [ ] Implement online/batch prediction patterns
+- [ ] Develop usage metrics dashboard
+- [ ] Document optimization strategies and results
+
+### Week 8: Responsible AI & Production Readiness
+- [ ] Implement Vertex Explainable AI for feature attribution
+- [ ] Create feature attribution visualization dashboard
+- [ ] Develop model cards with performance characteristics
+- [ ] Set up continuous evaluation system
+- [ ] Create comprehensive documentation for handover
+- [ ] Prepare final project portfolio materials
 
 ## Key Milestones
-1. **End of Week 2:** Working baseline model deployed
-2. **End of Week 5:** Complete MLOps pipeline with custom model
-3. **End of Week 7:** Fully functional web application at shelfscout.cloudaiprojects.com
-4. **End of Week 10:** Production-ready system with monitoring
+1. **End of Week 2:** Working baseline model deployed with AutoML
+2. **End of Week 4:** Complete MLOps pipeline with custom model
+3. **End of Week 6:** Functional demo application integrated with API
+4. **End of Week 8:** Production-ready system with monitoring and documentation
 
-## Technical Dependencies
-- GCP project with billing enabled and appropriate quotas
-- Access to GPU/TPU resources for training
-- Domain configuration for shelfscout.cloudaiprojects.com
-- SKU-110K dataset properly licensed for commercial use
+## Technical Stack
+
+### Data Management
+- **Cloud Storage**: Central repository for datasets and models
+- **Vertex AI Datasets**: Single managed dataset with metadata
+- **TFRecord Format**: Optimized storage format for training
+
+### Model Development
+- **Vertex AI AutoML**: Baseline model development
+- **TensorFlow Model Garden**: Pre-built architectures for fine-tuning
+- **Vertex AI Training**: Custom training with accelerators
+- **Vertex AI Experiments**: Experiment tracking and comparison
+
+### MLOps & Orchestration
+- **Vertex AI Pipelines**: Streamlined workflow orchestration
+- **Vertex AI Model Registry**: Model versioning and deployment
+- **Vertex ML Metadata**: Artifact tracking and lineage
+- **Cloud Monitoring**: Performance monitoring and alerting
+
+### Deployment & Serving
+- **Vertex AI Endpoints**: Scalable model serving
+- **Cloud Run**: Lightweight application hosting
+- **Streamlit**: Interactive demo interface
+- **Cloud Logging**: Centralized logging for all components
+
+### Responsible AI
+- **Vertex Explainable AI**: Model interpretability
+- **Model Cards**: Documentation of model characteristics
+- **Continuous Evaluation**: Ongoing validation of model performance
 
 ## Risk Mitigation
 1. **Data Quality Issues:**
    - Early validation of SKU-110K dataset
-   - Fallback plan to use AutoML if custom model challenges emerge
+   - Fallback to simpler model if quality issues emerge
 
 2. **Performance Bottlenecks:**
-   - Regular benchmark testing throughout development
-   - Staged rollout to identify scaling issues early
+   - Benchmark testing throughout development
+   - Focus on endpoint scaling and optimization
 
-3. **Integration Challenges:**
-   - Weekly end-to-end testing of the entire pipeline
-   - Modular architecture to isolate and address specific issues
+3. **Technical Complexity:**
+   - Leverage managed services where possible
+   - Implement essential components with quality over quantity
 
 4. **Resource Constraints:**
-   - Reservation of GPU/TPU resources in advance
-   - Cost monitoring and optimization throughout development
+   - Effective use of spot/preemptible instances for training
+   - Rightsizing of compute resources for cost-effectiveness
 
 ## Success Criteria
-- Model accuracy exceeds 90% mAP on test dataset
-- Inference latency below 200ms per image
-- Web application loads in under 2 seconds
-- End-to-end pipeline executes reliably with proper error handling
+- Model accuracy exceeds 85% mAP on test dataset
+- Inference latency below 250ms per image
+- End-to-end pipeline executes reliably
 - Monitoring provides clear visibility into system performance
+- Documentation demonstrates professional ML engineering capabilities
 
-This implementation plan creates a structured approach to building ShelfScout while emphasizing MLOps best practices and highlighting professional ML engineering capabilities throughout the development lifecycle.
+## Portfolio Impact Highlights
+- **GCP Professional ML Skills**: Comprehensive use of Vertex AI suite
+- **MLOps Excellence**: Reproducible pipeline with proper versioning
+- **Production Engineering**: Scalable endpoints with monitoring
+- **Responsible AI**: Explainability and continuous evaluation
+- **Technical Documentation**: Architecture decisions and trade-offs
+
+This optimized implementation plan maintains the production quality expected of a Professional ML Engineer while focusing on essential components that demonstrate real-world ML engineering expertise. By eliminating redundancy and over-engineering, the plan delivers a high-impact portfolio project in 8 weeks instead of 10.
