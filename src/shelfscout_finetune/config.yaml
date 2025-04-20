@@ -1,0 +1,28 @@
+# ShelfScout YOLOv8 Fine-tuning Configuration
+
+# Training parameters
+training:
+  # Basic training configuration
+  batch_size: 16                  # Batch size for YOLOv8
+  learning_rate: 0.001            # Learning rate with cosine scheduler
+  epochs: 50                      # Maximum number of epochs
+  early_stopping_patience: 10     # Stop if no improvement for this many epochs
+  optimizer: 'Adam'               # Optimizer to use
+  weight_decay: 0.0005            # Weight decay for regularization
+  
+  # Advanced augmentation for retail products
+  mosaic: 1.0                     # Mosaic augmentation probability (excellent for dense objects)
+  mixup: 0.15                     # MixUp augmentation probability
+  copy_paste: 0.3                 # Copy-paste augmentation (helps with dense objects)
+
+# Model parameters
+model:
+  variant: 'yolov8m'              # YOLOv8 medium - optimal balance of speed vs accuracy
+  image_size: 640                 # Input image size
+  confidence_threshold: 0.25      # Confidence threshold for detection
+  iou_threshold: 0.45             # IoU threshold for non-maximum suppression
+
+# Validation settings
+validation:
+  frequency: 1                    # Validate every N epochs
+  save_json: true                 # Save validation results in COCO JSON format

@@ -1,0 +1,10 @@
+ultralytics==8.0.220       # Pinned to stable version
+tensorflow==2.12.0         # For TFRecord parsing only
+numpy==1.23.5              
+pillow==9.5.0              
+matplotlib==3.7.1          
+tqdm==4.65.0               
+PyYAML==6.0                # Removed duplicate
+opencv-python==4.7.0.72    
+google-cloud-storage==2.9.0
+tensorboard==2.12.3        # For training visualization
